@@ -1,0 +1,22 @@
+.dropzone {
+    background: #ffffff;
+    color: grey;
+    border: 2px dashed #363636;
+    border-radius: 5px;
+
+}
+
+.uploadFiles{
+    padding: 20px;
+    margin-top: 10px;
+    
+}
+.enlace{
+text-decoration: none;
+
+}
+
+#preview-image {
+    max-width: 300px;
+
+}

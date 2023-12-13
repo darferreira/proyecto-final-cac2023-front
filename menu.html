@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CodoACodo - Carta QR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+
+    
+</head>
+  <body>
+    <header class="p-3 text-bg-dark">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+              <input type="search" class="form-control form-control-dark text-bg-dark" id="searchBox" placeholder="Buscar producto..." aria-label="Search">
+            </form>
+    
+            <div class="text-end">
+              <button type="button" class="btn btn-outline-light me-2">Buscar</button>
+              
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="py-3">
+        <main>
+          <div class="px-4 my-5 text-center">
+
+       
+                <img src="img/logo.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Logo REstaurante" width="400" loading="lazy">
+  
+
+          </div>
+          <div class="px-4 my-5 text-center">
+
+       
+            <h1>Nuestra Carta</h1>
+
+
+      </div>
+          <div class="album py-5 bg-body-tertiary">
+            <div id="app" class="container">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 l-3">
+                      <div class="col" v-for="(dato, index) in datos" :key="index">
+                      <div class="card shadow-sm mb-3">
+                        <img v-bind:src="url +dato.imagen" class="bd-placeholder-img card-img-top" width="100%" height="300" role="img" alt="Img Producto">
+                        <div class="card-body">
+                          <p class="card-text"><b>{{ dato.nombre }}</b></p>
+                          <p class="card-text">{{ dato.descripcion }}</p>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+ <!--                          <button type="button" class="btn btn-sm btn-outline-secondary" @click="agregarAlCarrito( dato.id )">Agregar al Carrito</button>-->   
+                            </div>
+                            <small class="text-body-secondary"> $ {{ dato.precio }}</small>
+                          </div>
+                        </div>
+                      </div>
+
+                  </div>
+                </div>
+    
+              </div> 
+              
+              
+
+          </div>
+          <script src="scripts/app.js"></script>
+        
+        </main>
+
+      </div>
+      <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+
+
+        </ul>
+        <p class="text-center text-body-secondary">© 2023 CodoACodo - Carta QR</p>
+      </footer>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  </body>
+</html>
