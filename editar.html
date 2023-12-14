@@ -63,8 +63,9 @@
                 </div>
                 <div class="col-lg-6 col-md-8 mx-auto mt-5">
                   <label for="archivo">Elegi una imagen</label>
-                  <input type="file" id="archivo" name="archivo"> 
+                  <input type="file" id="archivo" name="archivo" onchange="previewImage()"> 
                 </div>
+                <img id="preview-image" alt="Vista previa de la imagen" class="mt-5"> 
               </div>
 
             </form>
@@ -98,7 +99,7 @@
         <div class="px-4 my-5 text-center">
 
              
-              <button type="button" id="cargarProducto"  onclick="enviarDatos()" class="btn btn-outline-secondary btn-lg px-4" disabled>Cargar</button>
+              <button type="button" id="cargarProducto"  onclick="enviarDatos()" class="btn btn-outline-secondary btn-lg px-4">Cargar</button>
               <div id="notificaciones" class="mt-3">
               </div>
           </div>
@@ -116,6 +117,6 @@
       </footer>
     </div>
     <script src="./scripts/sendedit.js"></script>
-    <script src="./scripts/app.js"></script>
+    <!-- <script src="./scripts/app.js"></script> -->
 </body>
 </html>
