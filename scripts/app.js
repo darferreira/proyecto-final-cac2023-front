@@ -6,15 +6,16 @@ new Vue({
     datos: []
   },
   mounted() {
-    // Realizar la solicitud a la API usando fetch
-    fetch(`${this.url}/api/productos`)
-      .then(response => response.json())
-      .then(data => {
-        // Asignar los datos obtenidos a la propiedad datos
-       
-        this.datos = data;
-      })
-      .catch(error => console.error('Error fetching data:', error));
+    // Realizar la solicitud a la API usando fetch (llamada a method)
+    this.fetchData();
+
+  // Agregar un listener al botón btnSearch para realizar la búsqueda
+    const btnSearch = document.getElementById('btnSearch');
+    if (btnSearch) {
+      btnSearch.addEventListener('click', this.searchData);
+  }
+
+
   },
   methods: {
     agregarAlCarrito(dato) {
@@ -40,7 +41,48 @@ new Vue({
           })
           .catch(error => console.error('Error al borrar el producto:', error));
       }
+    },
+
+    fetchData() {
+      // Realizar la solicitud a la API usando fetch
+      fetch(`${this.url}/api/productos`)
+        .then(response => response.json())
+        .then(data => {
+          // Asignar los datos obtenidos a la propiedad datos
+          this.datos = data;
+        })
+        .catch(error => console.error('Error recuperando data:', error));
+    },
+
+    searchData() {
+      // Obtener el contenido del componente con id="searchBox"
+      const searchBoxContent = document.getElementById('searchBox').value;
+  
+      // Verificar si hay contenido 
+      if (searchBoxContent.trim() !== '') {
+        // Realizar la solicitud a la nueva API con el contenido del cuadro de búsqueda como parámetro
+        fetch(`${this.url}/api/searchProductos/${searchBoxContent}`)
+          .then(response => response.json())
+          .then(data => {
+            // Asignar los datos obtenidos a la propiedad datos
+            this.datos = data;
+          })
+          .catch(error => console.error('Error fetching data:', error));
+      } else {
+        // Si no hay contenido en el cuadro de búsqueda, seguir con la API original
+        this.fetchData();
+      }
+    },
+
+  
+  beforeDestroy() {
+    // Quitar el listener del btn btnSearch antes de destruir el componente
+    const btnSearch = document.getElementById('btnSearch');
+    if (btnSearch) {
+      btnSearch.removeEventListener('click', this.searchData);
     }
   }
+}
   
 });
+
