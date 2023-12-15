@@ -86,11 +86,9 @@ function enviarDatos() {
     // Si el input=file estaba vacío creo un nuevo File con el atributo filename=''
     if (input.files.length == 0){
       archivo = new File([""],'');
-      console.log("input esta vacío!!!")
     }
 
-    console.log(archivo);
-    
+  
 
     var formData = new FormData();
     formData.append('imagen', archivo);
