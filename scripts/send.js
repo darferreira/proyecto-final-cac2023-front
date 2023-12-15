@@ -6,35 +6,39 @@ document.addEventListener('DOMContentLoaded', function () {
     var archivoInput = document.getElementById('archivo');
     var cargarProductoBtn = document.getElementById('cargarProducto');
 
-    function checkFormCompletion() {
-      var nombre = nombreInput.value;
-      var descripcion = descripcionInput.value;
-      var precio = precioInput.value;
-      var stock = stockInput.value;
-      var archivo = archivoInput.value;
-
-      // Verificar si todos los campos están completos
-      if (nombre && descripcion && precio && stock && archivo) {
-        // Habilitar el botón si todos los campos están completos
-        cargarProductoBtn.disabled = false;
-      } else {
-        // Deshabilitar el botón si algún campo está incompleto
-        cargarProductoBtn.disabled = true;
-      }
-    }
-
     // Agregar eventos de entrada para cada campo
     nombreInput.addEventListener('input', checkFormCompletion);
     descripcionInput.addEventListener('input', checkFormCompletion);
     precioInput.addEventListener('input', checkFormCompletion);
     stockInput.addEventListener('input', checkFormCompletion);
     archivoInput.addEventListener('input', checkFormCompletion);
+
+    document.getElementById('preview-image').style.display = "none" //ocultamos el pereview de la imagn de producto
+    
+    function checkFormCompletion() {
+        var nombre = nombreInput.value;
+        var descripcion = descripcionInput.value;
+        var precio = precioInput.value;
+        var stock = stockInput.value;
+        var archivo = archivoInput.value;
+    
+        // Verificar si todos los campos están completos
+        if (nombre && descripcion && precio && stock && archivo) {
+          // Habilitar el botón si todos los campos están completos
+          cargarProductoBtn.disabled = false;
+        } else {
+          // Deshabilitar el botón si algún campo está incompleto
+          cargarProductoBtn.disabled = true;
+        }
+      }
   });
+
+
 
   function previewImage() {
     var input = document.getElementById('archivo');
     var preview = document.getElementById('preview-image');
-
+    preview.style.display = "";
     var file = input.files[0];
 
     if (file) {

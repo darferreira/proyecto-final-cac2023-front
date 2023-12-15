@@ -4,7 +4,7 @@
     //separa el string por los “&” creando una lista [“id=3” , “nombre=’tv50’” , ”precio=1200”,”stock=20”]
     var args = location.search.substr(1).split('&'); 
     //console.log(args)
-    var parts = []
+    var parts = [];
     for (let i = 0; i < args.length; ++i) {
       parts[i] = args[i].split('=');
     }
@@ -16,7 +16,7 @@
     var stockInput = document.getElementById('stock');
     var archivoInput = document.getElementById('archivo');
     var cargarProductoBtn = document.getElementById('cargarProducto');
-    var cargarImagePreview = document.getElementById("preview-image")
+    var cargarImagePreview = document.getElementById("preview-image");
 
     // Agregar eventos de entrada para cada campo
     nombreInput.addEventListener('input', checkFormCompletion);
@@ -30,7 +30,7 @@
     precioInput.value = decodeURIComponent(parts[2][1])
     stockInput.value =decodeURIComponent( parts[3][1])
     descripcionInput.value =decodeURIComponent( parts[4][1])
-    cargarImagePreview.setAttribute('src',`${url}/${decodeURIComponent( parts[5][1])}`)
+    cargarImagePreview.setAttribute('src',`${url}/${decodeURIComponent( parts[5][1])}`);
     // =decodeURIComponent( parts[5][1])
 
     function checkFormCompletion() {
@@ -38,7 +38,7 @@
       var descripcion = descripcionInput.value;
       var precio = precioInput.value;
       var stock = stockInput.value;
-      //var archivo = archivoInput.value;
+      var archivo = archivoInput.value;
 
       // Verificar si todos los campos están completos
       if (nombre && descripcion && precio && stock) {
@@ -86,9 +86,7 @@ function enviarDatos() {
     // Si el input=file estaba vacío creo un nuevo File con el atributo filename=''
     if (input.files.length == 0){
       archivo = new File([""],'');
-    }
-
-  
+   }
 
     var formData = new FormData();
     formData.append('imagen', archivo);
